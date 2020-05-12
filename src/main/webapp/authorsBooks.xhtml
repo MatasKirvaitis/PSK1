@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head/>
+<h:body>
+    <h2>Books written by #{books.author.firstName} #{books.author.lastName}:</h2>
+    <ol>
+        <ui:repeat value="#{books.bookList}" var="book">
+            <li>
+                <h:link value="#{book.title}" outcome="bookDetails?bookId=#{book.id}"/>
+            </li>
+        </ui:repeat>
+    </ol>
+
+    <h:form>
+        Fill out the book information:<br/>
+        Book title:
+        <h:inputText value="#{books.bookToCreate.title}" required="true"/><br/>
+        Book ISBN:
+        <h:inputText value="#{books.bookToCreate.isbn}" required="true"/><br/>
+        <h:commandButton value="Add new book" action="#{books.createBook}">
+            <f:param name="authorId" value="#{books.author.id}"/>
+        </h:commandButton>
+    </h:form>
+</h:body>
+</html>

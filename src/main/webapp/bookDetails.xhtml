@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head/>
+<h:body>
+    <h1>Book: "#{bookDetails.book.title}"</h1>
+    <h3>ISBN: "#{bookDetails.book.isbn}"</h3>
+    <h3>Author: "#{bookDetails.book.author.firstName} #{bookDetails.book.author.lastName}"</h3>
+
+    <h3>Genres:</h3>
+    <ol>
+        <ui:repeat value="#{bookDetails.genreList}" var="genre">
+            <ul>
+                <h:outputText value="#{genre.genreName}"/>
+            </ul>
+        </ui:repeat>
+    </ol>
+
+    <h3>Add book genre:</h3>
+    <h:form>
+        <h:selectOneMenu value="#{bookDetails.genre}" converter="omnifaces.SelectItemsConverter">
+            <f:selectItem itemLabel="Choose genre" noSelectionOption="true"/>
+            <f:selectItems value="#{bookDetails.genreListFree}" var="genre" itemLabel="#{genre.genreName}" itemValue="#{genre}"/>
+        </h:selectOneMenu>
+        <br/>
+        <h:commandButton value="Add genre" action="#{bookDetails.addGenre}">
+            <f:param name="bookId" value="#{bookDetails.book.id}"/>
+        </h:commandButton>
+    </h:form>
+</h:body>
+</html>
