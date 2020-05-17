@@ -3,7 +3,9 @@ package lt.vu.usecases;
 import lombok.Getter;
 import lombok.Setter;
 import lt.vu.entities.Author;
+import lt.vu.entities.Book;
 import lt.vu.persistence.AuthorsDAO;
+import lt.vu.persistence.BooksDAO;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
@@ -21,8 +23,14 @@ public class Authors {
     @Inject
     private AuthorsDAO authorsDAO;
 
+    @Inject
+    private BooksDAO booksDAO;
+
     @Getter @Setter
     private Author authorToCreate = new Author();
+
+    @Getter
+    private List<Book> bookList;
 
     @Getter
     private List<Author> allAuthors;
@@ -31,6 +39,11 @@ public class Authors {
     public void init(){ loadAllAuthors(); }
 
     private void loadAllAuthors() { allAuthors = authorsDAO.loadAll(); }
+
+    public Integer loadAmountOfBooks(Integer authorId) {
+        bookList = booksDAO.loadAll(authorId);
+        return bookList.size();
+    }
 
     @Transactional
     public String createAuthor(){

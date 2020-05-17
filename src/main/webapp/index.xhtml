@@ -10,7 +10,7 @@
         <ol>
             <ui:repeat value="#{authors.allAuthors}" var="author">
                 <li>
-                    <h:link value="#{author.firstName} #{author.lastName}" outcome = "authorsBooks?authorId=#{author.id}"/>
+                    <h:link value="#{author.firstName} #{author.lastName} #{authors.loadAmountOfBooks(author.id)}" outcome = "authorsBooks?authorId=#{author.id}"/>
                 </li>
             </ui:repeat>
         </ol>
