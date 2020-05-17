@@ -6,7 +6,8 @@
 >
 <h:head>
     <h:body>
-        <h3>List of Authors:</h3>
+        <h3>#{greetingsMessage.greeting()}</h3><br/>
+        <h4>List of Authors:</h4>
         <ol>
             <ui:repeat value="#{authors.allAuthors}" var="author">
                 <li>
@@ -24,7 +25,7 @@
             <h:commandButton value="Add new author" action="#{authors.createAuthor}" />
         </h:form>
 
-        <h3>Add Genres:</h3>
+        <h4>Add Genres:</h4>
         <ul>
             <ui:repeat value="#{genres.allGenres}" var="genre">
                 <ul>
