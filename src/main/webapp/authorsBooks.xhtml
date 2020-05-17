@@ -26,5 +26,11 @@
             <f:param name="authorId" value="#{books.author.id}"/>
         </h:commandButton>
     </h:form>
+    <h:form>
+        <h:commandButton value="Generate reading recommendation" disabled="#{generateRandomNumber.generationRunning}" action="#{generateRandomNumber.generateNumber}">
+            <f:param name="authorId" value="#{books.author.id}"/>
+        </h:commandButton>
+        <h:outputText value="#{generateRandomNumber.generationStatus}"/>
+    </h:form>
 </h:body>
 </html>

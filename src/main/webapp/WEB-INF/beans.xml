@@ -12,4 +12,7 @@
     <decorators>
         <class>lt.vu.decorators.GreetingMessageDecorator</class>
     </decorators>
+    <alternatives>
+        <class>lt.vu.services.PageGenerator</class>
+    </alternatives>
 </beans>
