@@ -1,6 +1,7 @@
 package lt.vu.persistence;
 
 import lt.vu.entities.Author;
+import lt.vu.entities.Book;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -26,5 +27,9 @@ public class AuthorsDAO {
 
     public Author findOne(Integer id) {
         return em.find(Author.class, id);
+    }
+
+    public Author update(Author author){
+        return em.merge(author);
     }
 }

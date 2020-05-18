@@ -28,6 +28,10 @@ public class Genre implements Serializable {
     @ManyToMany(mappedBy = "genres")
     private List<Book> books = new ArrayList<>();
 
+    @Version
+    @Column(name = "OPT_LOCK_VERSION")
+    private Integer version;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
