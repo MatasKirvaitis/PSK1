@@ -1,6 +1,6 @@
 package lt.vu.decorators;
 
-import lt.vu.services.SimpleDateTimeService;
+import lt.vu.services.DateTimeService;
 
 import javax.decorator.Decorator;
 import javax.decorator.Delegate;
@@ -15,10 +15,10 @@ public class GreetingMessageDecorator implements Message{
     GreetingMessage greetingMessage;
 
     @Inject
-    private SimpleDateTimeService simpleDateTimeService;
+    private DateTimeService dateTimeService;
 
     @Override
     public String greeting(){
-        return greetingMessage.greeting() + "Current date and time is: " + simpleDateTimeService.date() + " " + simpleDateTimeService.time();
+        return greetingMessage.greeting() + "Current date and time is: " + dateTimeService.date() + " " + dateTimeService.time();
     }
 }

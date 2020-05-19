@@ -10,7 +10,7 @@ public class PageGenerator implements Generator{
     @Override
     public Integer generateNumber() {
         try{
-            Thread.sleep(1000);
+            Thread.sleep(8000);
         } catch (InterruptedException e){
         }
         return new Random().nextInt(90) + 10;
